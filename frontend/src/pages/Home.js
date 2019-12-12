@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import NavHome from "../nav/NavHome";
+import NavHome from "../components/nav/NavHome";
 
 export default class Home extends Component {
     constructor(props) {
