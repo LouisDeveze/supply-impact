@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import NavHome from "../components/nav/NavHome";
+import NavHome from "../nav/NavHome";
 
 export default class Home extends Component {
     constructor(props) {
@@ -7,11 +7,6 @@ export default class Home extends Component {
       this.data = {};
     }
 
-componentDidMount() {
-    let user_id = localStorage.getItem("user_id");
-    if (user_id === null || user_id === undefined)
-        window.location.replace("/log/in");
-    }
 
 render() {
     return (
