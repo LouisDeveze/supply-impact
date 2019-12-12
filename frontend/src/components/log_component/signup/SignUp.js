@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 //import { Link } from "react-router-dom";
-import { MDBRow, MDBBtn, MDBContainer } from "mdbreact";
+import { MDBRow, MDBCard, MDBBtn, MDBContainer } from "mdbreact";
 
 class SignUp extends Component {
 
@@ -29,17 +29,23 @@ class SignUp extends Component {
 
   render() {
     return (
-      <MDBContainer className="main" alignItem="center">
+      <MDBContainer className="d-flex
+                              justify-content-center
+                              align-content-center
+                              flex-column">
+        <MDBCard className="d-flex
+                            justify-content-center
+                            align-self-center">
         <form 
           className="signup"
           onSubmit={this.submitHandler}
           noValidate>
-        <MDBRow>
+        <MDBRow className="justify-content-center">
           <div>
             <label
               htmlFor="defaultFormRegisterNameEx"
               className="grey-text">
-              Email Company
+              Email
             </label>
             <input
               value={this.state.email}
@@ -50,7 +56,7 @@ class SignUp extends Component {
             </input>
           </div>
           </MDBRow>
-          <MDBRow>
+          <MDBRow className="justify-content-center">
           <div>
             <label
               htmlFor="defaultFormRegisterNameEx"
@@ -66,7 +72,7 @@ class SignUp extends Component {
             </input>
           </div>
         </MDBRow>
-        <MDBRow>
+        <MDBRow className="justify-content-center">
           <div>
             <label
               htmlFor="defaultFormRegisterNameEx"
@@ -82,7 +88,7 @@ class SignUp extends Component {
             </input>
           </div>
           </MDBRow>
-          <MDBRow>
+          <MDBRow className="justify-content-center">
           <div>
             <label
               htmlFor="defaultFormRegisterNameEx"
@@ -98,7 +104,7 @@ class SignUp extends Component {
             </input>
           </div>
         </MDBRow>
-        <MDBRow>
+        <MDBRow className="justify-content-center">
           <div>
             <label
               htmlFor="defaultFormRegisterNameEx"
@@ -114,7 +120,7 @@ class SignUp extends Component {
             </input>
           </div>
           </MDBRow>
-          <MDBRow>
+          <MDBRow className="justify-content-center">
           <div>
             <label
               htmlFor="defaultFormRegisterNameEx"
@@ -130,7 +136,7 @@ class SignUp extends Component {
             </input>
           </div>
         </MDBRow>
-        <MDBRow>
+        <MDBRow className="justify-content-center">
           <div>
             <label
               htmlFor="defaultFormRegisterNameEx"
@@ -146,7 +152,7 @@ class SignUp extends Component {
             </input>
           </div>
           </MDBRow>
-          <MDBRow>
+          <MDBRow className="justify-content-center">
           <div>
             <label
               htmlFor="defaultFormRegisterNameEx"
@@ -162,12 +168,12 @@ class SignUp extends Component {
             </input>
           </div>
         </MDBRow>
-        <MDBRow>
+        <MDBRow className="justify-content-center">
           <div>
             <label
               htmlFor="defaultFormRegisterNameEx"
               className="grey-text">
-              Company Name
+              Company
             </label>
             <input
               value={this.state.email}
@@ -178,7 +184,7 @@ class SignUp extends Component {
             </input>
           </div>
           </MDBRow>
-          <MDBRow>
+          <MDBRow className="justify-content-center">
           <div>
             <label
               htmlFor="defaultFormRegisterNameEx"
@@ -197,7 +203,11 @@ class SignUp extends Component {
         <MDBBtn color="primary" type="submit">
             Create
         </MDBBtn>
+        <MDBBtn color="red" type="submit">
+            Cancel
+        </MDBBtn>
         </form>
+        </MDBCard>
       </MDBContainer>
     );
   }
