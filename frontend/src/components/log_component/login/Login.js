@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 //import { Link } from "react-router-dom";
-import { MDBRow, MDBCol, MDBBtn } from "mdbreact";
+import { MDBRow, MDBIcon, MDBBtn, MDBContainer } from "mdbreact";
 
 class Login extends Component {
 
@@ -19,7 +19,8 @@ class Login extends Component {
 
   render() {
     return (
-      <div className = "main">
+      <MDBContainer className="main">
+        <MDBIcon icon="user-alt" />
         <form 
           className="login"
           onSubmit={this.submitHandler}
@@ -39,6 +40,8 @@ class Login extends Component {
               required>
             </input>
           </div>
+          </MDBRow>
+          <MDBRow>
           <div>
             <label
               htmlFor="defaultFormRegisterNameEx"
@@ -57,8 +60,14 @@ class Login extends Component {
         <MDBBtn color="primary" type="submit">
             Connect
         </MDBBtn>
+        <MDBBtn color="secondary" type="submit">
+            Create a Supplier Account
+        </MDBBtn>
+        <MDBBtn color="secondary" type="submit">
+            Create a Distributor Account
+        </MDBBtn>
         </form>
-      </div>
+      </MDBContainer>
     );
   }
 }
