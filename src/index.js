@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router , Switch, Route } from "react-router-dom";
-import Login from "./components/log_component/login";
-import SignUp from "./components/log_component/signup";
+import Login from "./components/log_component/login/Login";
+import SignUp from "./components/log_component/signup/SignUp";
+import Home from './components/pages/Home';
 
 //Import the MDBReact's requirement
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -15,7 +16,7 @@ const routing = (
     <Router>
       <div id="routing-container">
         <Switch>
-          <Route path="/" exact component={Login}></Route>
+          <Route path="/" component={Home}></Route>
           <Route path="/signin" component={SignUp}></Route>
         </Switch>
       </div>
