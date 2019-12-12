@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router , Switch, Route } from "react-router-dom";
-import Login from "./components/log_component/login";
-import SignUp from "./components/log_component/signup";
+import Login from "./components/log_component/login/Login";
+import SignUp from "./components/log_component/signup/SignUp";
 
 //Import the MDBReact's requirement
 import '@fortawesome/fontawesome-free/css/all.min.css';
