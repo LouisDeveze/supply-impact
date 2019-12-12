@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import logo from "../../../res/img/logo.png";
-import { MDBContainer, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBIcon } from 'mdbreact';
+import logo from "./img/logo.png";
+import { MDBContainer, MDBNavbar, MDBNavbarBrand, MDBNavbarNav,
+     MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, 
+     MDBIcon, MDBDropdown, MDBDropdownToggle,MDBDropdownMenu, MDBDropdownItem } from 'mdbreact';
 import { withRouter } from "react-router-dom";
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -33,7 +35,7 @@ class NavHome extends Component {
         <div>
             <Router>
             <header>
-                <MDBNavbar style={indigo} dark expand="md" scrolling fixed="top">
+                <MDBNavbar color="indigo" dark expand="md" scrolling fixed="top">
                 <MDBNavbarBrand href="/">
                     <strong><img src={logo} alt="Supply'Impact logo" style={{ width: "50px" }}></img></strong>
                 </MDBNavbarBrand>
