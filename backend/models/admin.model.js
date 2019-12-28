@@ -14,7 +14,7 @@ const adminSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    email_contact : {
+    phone : {
         type: String,
         required: true
     }
