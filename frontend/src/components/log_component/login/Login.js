@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 //import { Link } from "react-router-dom";
-import { MDBRow,MDBCard, MDBIcon, MDBBtn, MDBContainer } from "mdbreact";
+import { MDBRow, MDBCard, MDBBtn, MDBContainer } from "mdbreact";
 
 class Login extends Component {
 
@@ -21,11 +21,12 @@ class Login extends Component {
     return (
       <MDBContainer className="d-flex 
                               justify-content-center 
-                              align-self-center 
+                              align-self-center
                               flex_column">
         <MDBCard className="d-flex
                             justify-content-center
                             align-self-center">
+        <h1 className="align-self-center">Login</h1>
         <form 
           className="login"
           onSubmit={this.submitHandler}
@@ -33,7 +34,7 @@ class Login extends Component {
         <MDBRow className="justify-content-center">
           <div>
             <label
-              htmlFor="defaultFormRegisterNameEx"
+              htmlFor="defaultFormRegisterName"
               className="grey-text">
               Email
             </label>
@@ -49,7 +50,7 @@ class Login extends Component {
           <MDBRow className="justify-content-center">
           <div>
             <label
-              htmlFor="defaultFormRegisterNameEx"
+              htmlFor="defaultFormRegisterPassword"
               className="grey-text">
               Password
             </label>

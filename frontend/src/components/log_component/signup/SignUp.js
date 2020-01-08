@@ -36,6 +36,7 @@ class SignUp extends Component {
         <MDBCard className="d-flex
                             justify-content-center
                             align-self-center">
+        <h1 className="align-self-center">Sign Up</h1>
         <form 
           className="signup"
           onSubmit={this.submitHandler}
