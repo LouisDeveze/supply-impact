@@ -11,7 +11,7 @@ export default class Editor extends Component{
 
     render() {
         return (
-            <div >Coucou</div>
+            <div style={{backgroundColor: "#aa0000", height:"30px"}}>Coucou</div>
         );
     }
 }

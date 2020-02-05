@@ -1,0 +1,15 @@
+{
+    "short_name": "Supply'Impact",
+    "name": "Suply'Impact",
+    "icons": [
+      {
+        "src": "logo.png",
+        "sizes": "960x960",
+        "type": "image/png"
+      }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+  }
