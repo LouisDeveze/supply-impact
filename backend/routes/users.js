@@ -5,6 +5,8 @@ var user = require('../controllers/user.controller');
 /* GET users listing. */
 router.get('/', user.findAll);
 
+router.get('/email', user.findOne);
+
 router.put('/', user.create);
 
 module.exports = router;

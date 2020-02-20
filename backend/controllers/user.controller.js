@@ -137,125 +137,104 @@ exports.create = (req, res) => {
 };
 
 
-// // Find a single User with a UserId
-// exports.findOne = (req, res) => {
+// Find a single User with a email
+exports.findOne = (req, res) => {
 
-//   //If id is pass in request
-//   if(req.body.userId){
-//     User.findById(req.body.userId)
-//     .then(user => {
-//       if (!user) {
-//         return res.status(404).send({
-//           message: 'User not found with id ' + req.body.userId
-//         });
-//       }
-//       res.send(user);
-//     })
-//     .catch(err => {
-//       if (err.kind === 'ObjectId') {
-//         return res.status(404).send({
-//           message: 'User not found with id ' + req.body.userId
-//         });
-//       }
-//       return res.status(500).send({
-//         message: 'Error retrieving user with id ' + req.body.userId
-//       });
-//     });
-//   }else if(req.body){
-//     var diffParams = {};
+  //If id is pass in request
+  if(req.body){
+    var diffParams = {};
 
-//     if(req.body.location){
-//       diffParams.location = req.body.location;
-//     }
+    if(req.body.email){
+      diffParams.email = req.body.email;
+      console.log("Email : " + diffParams.email);
+    }else{
+      return res.status(404).send({
+        message: 'No email in the body for User findOne'
+      });
+    }
 
-//     if(req.body.personsInHouse){
-//       diffParams.personsInHouse = req.body.personsInHouse;
-//     }
-    
-//     if(req.body.houseSize){
-//       diffParams.houseSize = req.body.houseSize;
-//     }
+    //on ne demande pas le password
+    User.find(diffParams, {password : 0})
+    .then(user => {
+      if (!user) {
+        return res.status(404).send({
+          message: 'User not found with thoses : ' + diffParams
+        });
+      }
+      
+      res.send(user[0]);
+    })
+    .catch(err => {
+      if (err.kind === 'ObjectId') {
+        return res.status(404).send({
+          message: 'User not found with thoses params ' +diffParams
+        });
+      }
+      return res.status(500).send({
+        message: 'Error retrieving user with thoses params' + diffParams
+      });
+    });
+  }
+  else{
+    return res.status(404).send({
+      message: 'No params in request'
+    });
+  }
+};
 
-//     User.find(diffParams)
-//     .then(user => {
-//       if (!user) {
-//         return res.status(404).send({
-//           message: 'User not found with thoses params ' + diffParams
-//         });
-//       }
-//       res.send(user);
-//     })
-//     .catch(err => {
-//       if (err.kind === 'ObjectId') {
-//         return res.status(404).send({
-//           message: 'User not found with thoses params ' +diffParams
-//         });
-//       }
-//       return res.status(500).send({
-//         message: 'Error retrieving user with thoses params' + diffParams
-//       });
-//     });
-//   }
-//   else{
-//     return res.status(404).send({
-//       message: 'No params in request'
-//     });
-//   }
-// };
+// Update a User identified by the UserId in the request
+exports.update = (req, res) => {
+  // Validate Request
+  if (!req.body.userId) {
+    return res.status(400).send({
+      message: 'userId can not be empty'
+    });
+  }
 
-// // Update a User identified by the UserId in the request
-// exports.update = (req, res) => {
-//   // Validate Request
-//   if (!req.body.userId) {
-//     return res.status(400).send({
-//       message: 'userId can not be empty'
-//     });
-//   }
-
-//   User.findById(req.body.userId).lean()
-//     .then(user => {
-//       if (!user) {
-//         return res.status(404).send({
-//           message: 'User not found with id ' + req.body.userId
-//         });
-//       }else{
-//         const userReceived = req.body;
-//         const newUser = Object.assign({}, user, userReceived);
-//         delete newUser.userId;
-//         newUser.personsInHouse = Number(newUser.personsInHouse);
+  User.findById(req.body.userId).lean()
+    .then(user => {
+      if (!user) {
+        return res.status(404).send({
+          message: 'User not found with id ' + req.body.userId
+        });
+      }else{
+        const userReceived = req.body;
+        const newUser = Object.assign({}, user, userReceived);
+        delete newUser.userId;
+        newUser.personsInHouse = Number(newUser.personsInHouse);
         
-//         // Find user and update it with the request body
-//         User.findByIdAndUpdate(
-//           req.body.userId,
-//           {$set: {
-//             location: newUser.location,
-//             personsInHouse: newUser.personsInHouse,
-//             houseSize: newUser.houseSize
-//           }},
-//           { new: true }
-//         )
-//           .then(userMod => {
-//             if (!userMod) {
-//               return res.status(404).send({
-//                 message: 'User not found with id ' + req.body.userId
-//               });
-//             }
-//             res.send(userMod);
-//           })
-//           .catch(err => {
-//             if (err.kind === 'ObjectId') {
-//               return res.status(404).send({
-//                 message: 'User not found with id ' + req.body.userId
-//               });
-//             }
-//             return res.status(500).send({
-//               message: 'Error updating user with id ' + req.body.userId
-//             });
-//           });
-//       }
+        // Find user and update it with the request body
+        User.findByIdAndUpdate(
+          req.body.userId,
+          {$set: {
+            location: newUser.location,
+            personsInHouse: newUser.personsInHouse,
+            houseSize: newUser.houseSize
+          }},
+          { new: true }
+        )
+          .then(userMod => {
+            if (!userMod) {
+              return res.status(404).send({
+                message: 'User not found with id ' + req.body.userId
+              });
+            }
+            res.send(userMod);
+          })
+          .catch(err => {
+            if (err.kind === 'ObjectId') {
+              return res.status(404).send({
+                message: 'User not found with id ' + req.body.userId
+              });
+            }
+            return res.status(500).send({
+              message: 'Error updating user with id ' + req.body.userId
+            });
+          });
+      }
         
-//   })
-// };
+  })
+};
 
 // // Delete a User with the specified UserId in the request
 // exports.delete = (req, res) => {
