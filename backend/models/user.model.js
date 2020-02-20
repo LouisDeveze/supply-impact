@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    campagny_fillial: {
+    compagny_fillial: {
       type: String,
       required: false
     },
