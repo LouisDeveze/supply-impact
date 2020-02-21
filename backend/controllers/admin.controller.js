@@ -13,28 +13,28 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Create and Save a new User
+// Create and Save a new Admin
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.username) {
     // If firstName is not present in body reject the request by
     // sending the appropriate http code
     return res.status(400).send({
-      message: 'compagny_name_fillial can not be empty'
+      message: 'userName can not be empty'
     });
   }
   if (!req.body.password) {
     // If firstName is not present in body reject the request by
     // sending the appropriate http code
     return res.status(400).send({
-      message: 'email can not be empty'
+      message: 'password can not be empty'
     });
   }
   if (!req.body.email_contact) {
     // If firstName is not present in body reject the request by
     // sending the appropriate http code
     return res.status(400).send({
-      message: 'password can not be empty'
+      message: 'email can not be empty'
     });
   }
   if (!req.body.phone) {
@@ -52,18 +52,18 @@ exports.create = (req, res) => {
     phone : req.body.phone
     });
 
-  // Save User in the database
+  // Save Admin in the database
   admin
     .save()
     .then(data => {
-      // we wait for insertion to be complete and we send the newly user integrated
+      // we wait for insertion to be complete and we send the newly admin integrated
       res.send(data);
     })
     .catch(err => {
-      // In case of error during insertion of a new user in database we send an
+      // In case of error during insertion of a new admin in database we send an
       // appropriate message
       res.status(500).send({
-        message: err.message || 'Some error occurred while creating the User.'
+        message: err.message || 'Some error occurred while creating the Admin.'
       });
     });
 };

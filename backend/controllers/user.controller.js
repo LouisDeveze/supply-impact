@@ -137,7 +137,7 @@ exports.create = (req, res) => {
 };
 
 
-// Find a single User with a email
+// Find a single User with an email
 exports.findOne = (req, res) => {
 
   //If id is pass in request
