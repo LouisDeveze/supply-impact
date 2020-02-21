@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 var contratInputSchema = new mongoose.Schema(
     {
-        contract : {
+        contrat : {
             type : mongoose.Schema.Types.ObjectId,
             required : true
         },
@@ -49,7 +49,7 @@ var relationsSchema = new mongoose.Schema(
 
 const modelProduitSchema = new mongoose.Schema(
   {
-    contractInput : [contratInputSchema],
+    contratInput : [contratInputSchema],
     
     process : [processSchema],
 
