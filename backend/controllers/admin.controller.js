@@ -75,9 +75,9 @@ exports.findOne = (req, res) => {
   if(req.body){
     var diffParams = {};
 
-    if(req.body.email){
-      diffParams.email = req.body.email;
-      console.log("Email : " + diffParams.email);
+    if(req.body.email_contact){
+      diffParams.email_contact = req.body.email_contact;
+      console.log("Email : " + diffParams.email_contact);
     }else{
       return res.status(404).send({
         message: 'No email in the body for Admin findOne'
@@ -93,7 +93,7 @@ exports.findOne = (req, res) => {
         });
       }
       
-      res.send(user[0]);
+      res.send(admin[0]);
     })
     .catch(err => {
       if (err.kind === 'ObjectId') {
