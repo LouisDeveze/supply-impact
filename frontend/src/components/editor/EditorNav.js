@@ -70,7 +70,7 @@ class EditorNav extends Component {
                                 <MDBDropdownToggle nav caret>
                                 <MDBIcon icon="user" />
                                 </MDBDropdownToggle>
-                                <MDBDropdownMenu className="dropdown-default">
+                                <MDBDropdownMenu right basic className="dropdown-default">
                                 <MDBDropdownItem href="#!">DashBoard</MDBDropdownItem>
                                 <MDBDropdownItem href="#!">Account</MDBDropdownItem>
                                 <MDBDropdownItem href="#!">Change User</MDBDropdownItem>
