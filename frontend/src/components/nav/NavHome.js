@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "./img/logo.png";
+import logo from "./public/img/logo.png";
 import { MDBContainer, MDBNavbar, MDBNavbarBrand, MDBNavbarNav,
      MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, 
      MDBIcon, MDBDropdown, MDBDropdownToggle,MDBDropdownMenu, MDBDropdownItem } from 'mdbreact';
