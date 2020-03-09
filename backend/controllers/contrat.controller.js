@@ -79,3 +79,26 @@ exports.create = (req, res) => {
       });
     });
 };
+
+exports.delete = (req, res) => {
+
+  Contrat.findByIdAndRemove(req.params.idContrat)
+    .then(contrat => {
+      if (!contrat) {
+        return res.status(404).send({
+          message: 'Contrat not found with id ' + req.params.idContrat
+        });
+      }
+      res.send({ message: 'Contrat deleted successfully!' });
+    })
+    .catch(err => {
+      if (err.kind === 'ObjectId' || err.name === 'NotFound') {
+        return res.status(404).send({
+          message: 'Contrat not found with id ' + req.params.idContrat
+        });
+      }
+      return res.status(500).send({
+        message: 'Could not delete Contrat with id ' + req.params.idContrat
+      });
+    });
+};
