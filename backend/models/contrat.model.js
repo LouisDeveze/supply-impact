@@ -35,9 +35,9 @@ const contratSchema = new mongoose.Schema(
     },
     dataContrat: {
         type: [mongoose.Schema.Types.Mixed],
-        required: true
+        required: false
       },
-    processes : [contratSchema],
+    processes : [processesSchema],
     relation : {
         type1 : {
             type : String,
