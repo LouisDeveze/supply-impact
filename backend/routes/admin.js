@@ -7,4 +7,6 @@ router.get('/', admin.findAll);
 
 router.put('/', admin.create);
 
+router.delete('/:adminId', admin.delete);
+
 module.exports = router;

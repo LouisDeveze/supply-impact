@@ -7,4 +7,6 @@ router.get('/', contrat.findAll);
 
 router.put('/', contrat.create);
 
+router.delete('/:idContrat', contrat.delete);
+
 module.exports = router;

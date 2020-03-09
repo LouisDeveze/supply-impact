@@ -67,3 +67,27 @@ exports.create = (req, res) => {
       });
     });
 };
+
+
+exports.delete = (req, res) => {
+
+  Admin.findByIdAndRemove(req.params.adminId)
+    .then(admin => {
+      if (!admin) {
+        return res.status(404).send({
+          message: 'Admin not found with id ' + req.params.adminId
+        });
+      }
+      res.send({ message: 'Admin deleted successfully!' });
+    })
+    .catch(err => {
+      if (err.kind === 'ObjectId' || err.name === 'NotFound') {
+        return res.status(404).send({
+          message: 'Admin not found with id ' + req.params.adminId
+        });
+      }
+      return res.status(500).send({
+        message: 'Admin not delete user with id ' + req.params.adminId
+      });
+    });
+};
