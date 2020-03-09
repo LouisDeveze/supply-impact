@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import logo from "./img/logo.png";
-import { MDBContainer, MDBNavbar, MDBNavbarBrand, MDBNavbarNav,
+import logo from "../../img/logo.png";
+import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav,
      MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, 
      MDBIcon, MDBDropdown, MDBDropdownToggle,MDBDropdownMenu, MDBDropdownItem } from 'mdbreact';
 import { withRouter } from "react-router-dom";

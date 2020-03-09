@@ -1,13 +1,15 @@
-import React from 'react';
-import './App.css';
+import React, {Component} from 'react';
+import ProcessEditor from './pages/ProcessEditor';
+import { Route} from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-    </div>
-  );
+
+export default class App extends Component {
+
+  render() {
+    return (
+      <div>
+        <Route path="/" exact component={ProcessEditor} />
+      </div>
+    );
+  }
 }
-
-export default App;

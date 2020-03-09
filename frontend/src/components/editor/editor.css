@@ -1,0 +1,16 @@
+
+html, body{
+  overflow: hidden;
+
+}
+
+.editor{
+    background-color: white;
+    background-image:url("../../img/EditorBackground.png");
+    background-repeat: repeat;
+    background-size: 15rem;
+}
+
+.editor-panel{
+    background-color: whitesmoke;
+}
