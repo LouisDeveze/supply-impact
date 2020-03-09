@@ -7,4 +7,6 @@ router.get('/', modelProduit.findAll);
 
 router.put('/', modelProduit.create);
 
+router.delete('/:modelProduitId', modelProduit.delete);
+
 module.exports = router;

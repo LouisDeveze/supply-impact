@@ -59,3 +59,26 @@ exports.create = (req, res) => {
       });
     });
 };
+
+exports.delete = (req, res) => {
+
+  ModelProduit.findByIdAndRemove(req.params.modelProduitId)
+    .then(user => {
+      if (!user) {
+        return res.status(404).send({
+          message: 'modelProduit not found with id ' + req.params.modelProduitId
+        });
+      }
+      res.send({ message: 'modelPRoduit deleted successfully!' });
+    })
+    .catch(err => {
+      if (err.kind === 'ObjectId' || err.name === 'NotFound') {
+        return res.status(404).send({
+          message: 'User not found with id ' + req.params.modelProduitId
+        });
+      }
+      return res.status(500).send({
+        message: 'Could not delete user with id ' + req.params.modelProduitId
+      });
+    });
+};
