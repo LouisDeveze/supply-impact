@@ -137,3 +137,64 @@ exports.delete = (req, res) => {
     });
 };
 
+exports.updateAll = (req, res) => {
+
+  if(!req.body.id){
+    return res.status(400).send({
+      message: 'id can not be empty'
+    });
+  }
+
+  if(!req.body.phone){
+    return res.status(400).send({
+      message: 'phone can not be empty'
+    });
+  }
+
+  if(!req.body.email_contact){
+    return res.status(400).send({
+      message: 'email_contact can not be empty'
+    });
+  }
+
+  if(!req.body.password){
+    return res.status(400).send({
+      message: 'password can not be empty'
+    });
+  }
+
+  if(!req.body.username){
+    return res.status(400).send({
+      message: 'username can not be empty'
+    });
+  }
+
+  Admin.updateOne({ _id: req.body.id }, 
+    { $set: {                    
+       phone: req.body.phone,
+       email_contact: req.body.email_contact,
+       password: req.body.password,
+       username: req.body.username
+      } 
+    })
+  .then(result => {
+    if (!result) {
+      return res.status(404).send({
+        message: 'Admin not found with id : ' + req.body.id
+      });
+    }
+    res.send({ message: result });
+  })
+  .catch(err => {
+    if (err.kind === 'ObjectId' || err.name === 'NotFound') {
+      return res.status(404).send({
+        message: 'Admin not found with id ' + req.body.id
+      });
+    }
+    return res.status(500).send({
+      message: 'Admin not update with id ' + req.body.id + ' and error : ' + err.message
+    });
+  });
+
+}
+

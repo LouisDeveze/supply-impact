@@ -102,3 +102,83 @@ exports.delete = (req, res) => {
       });
     });
 };
+
+exports.updateAll = (req, res) => {
+  if(!req.body.id){
+    return res.status(400).send({
+      message: 'id can not be empty'
+    });
+  }
+
+  if(!req.body.contrat){
+    return res.status(400).send({
+      message: 'contrat can not be empty'
+    });
+  }
+
+  if(!req.body.produitIn){
+    return res.status(400).send({
+      message: 'produitIn can not be empty'
+    });
+  }
+
+  if(!req.body.produitOut){
+    return res.status(400).send({
+      message: 'produitOut can not be empty'
+    });
+  }
+
+  if(!req.body.dateContrat){
+    return res.status(400).send({
+      message: 'dateContrat can not be empty'
+    });
+  }
+
+  if(!req.body.dataContrat){
+    return res.status(400).send({
+      message: 'dataContrat can not be empty'
+    });
+  }
+
+  if(!req.body.processes){
+    return res.status(400).send({
+      message: 'processes can not be empty'
+    });
+  }
+
+  if(!req.body.relation){
+    return res.status(400).send({
+      message: 'relation can not be empty'
+    });
+  }
+
+  Contrat.updateOne({ _id: req.body.id }, 
+    { $set: {                    
+      contrat: req.body.contrat,
+      produitIn: req.body.produitIn,
+      produitOut: req.body.produitOut,
+      dateContrat: req.body.dateContrat,
+      dataContrat: req.body.dataContrat,
+      processes: req.body.processes,
+      relation: req.body.relation
+      } 
+    })
+  .then(result => {
+    if (!result) {
+      return res.status(404).send({
+        message: 'Contrat not found with id : ' + req.body.id
+      });
+    }
+    res.send({ message: result });
+  })
+  .catch(err => {
+    if (err.kind === 'ObjectId' || err.name === 'NotFound') {
+      return res.status(404).send({
+        message: 'Contrat not found with id ' + req.body.id
+      });
+    }
+    return res.status(500).send({
+      message: 'Contrat not update with id ' + req.body.id + ' and error : ' + err.message
+    });
+  });
+}

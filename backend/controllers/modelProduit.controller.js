@@ -82,3 +82,55 @@ exports.delete = (req, res) => {
       });
     });
 };
+
+exports.updateAll = (req, res) => {
+  if(!req.body.id){
+    return res.status(400).send({
+      message: 'id can not be empty'
+    });
+  }
+
+  if(!req.body.contratInput){
+    return res.status(400).send({
+      message: 'contratInput can not be empty'
+    });
+  }
+
+  if(!req.body.process){
+    return res.status(400).send({
+      message: 'process can not be empty'
+    });
+  }
+
+  if(!req.body.relations){
+    return res.status(400).send({
+      message: 'relations can not be empty'
+    });
+  }
+
+  ModelProduit.updateOne({ _id: req.body.id }, 
+    { $set: {                    
+      contratInput: req.body.contratInput,
+      process: req.body.process,
+      relations: req.body.relations
+      } 
+    })
+  .then(result => {
+    if (!result) {
+      return res.status(404).send({
+        message: 'ModelProduit not found with id : ' + req.body.id
+      });
+    }
+    res.send({ message: result });
+  })
+  .catch(err => {
+    if (err.kind === 'ObjectId' || err.name === 'NotFound') {
+      return res.status(404).send({
+        message: 'ModelProduit not found with id ' + req.body.id
+      });
+    }
+    return res.status(500).send({
+      message: 'ModelProduit not update with id ' + req.body.id + ' and error : ' + err.message
+    });
+  });
+}

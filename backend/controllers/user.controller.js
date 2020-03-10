@@ -207,56 +207,89 @@ exports.delete = (req, res) => {
 };
 
 
-// // Update a User identified by the UserId in the request
-// exports.update = (req, res) => {
-//   // Validate Request
-//   if (!req.body.userId) {
-//     return res.status(400).send({
-//       message: 'userId can not be empty'
-//     });
-//   }
+exports.updateAll = (req, res) => {
+  if(!req.body.id){
+    return res.status(400).send({
+      message: 'id can not be empty'
+    });
+  }
 
-//   User.findById(req.body.userId).lean()
-//     .then(user => {
-//       if (!user) {
-//         return res.status(404).send({
-//           message: 'User not found with id ' + req.body.userId
-//         });
-//       }else{
-//         const userReceived = req.body;
-//         const newUser = Object.assign({}, user, userReceived);
-//         delete newUser.userId;
-//         newUser.personsInHouse = Number(newUser.personsInHouse);
-        
-//         // Find user and update it with the request body
-//         User.findByIdAndUpdate(
-//           req.body.userId,
-//           {$set: {
-//             location: newUser.location,
-//             personsInHouse: newUser.personsInHouse,
-//             houseSize: newUser.houseSize
-//           }},
-//           { new: true }
-//         )
-//           .then(userMod => {
-//             if (!userMod) {
-//               return res.status(404).send({
-//                 message: 'User not found with id ' + req.body.userId
-//               });
-//             }
-//             res.send(userMod);
-//           })
-//           .catch(err => {
-//             if (err.kind === 'ObjectId') {
-//               return res.status(404).send({
-//                 message: 'User not found with id ' + req.body.userId
-//               });
-//             }
-//             return res.status(500).send({
-//               message: 'Error updating user with id ' + req.body.userId
-//             });
-//           });
-//       }
-        
-//   })
-// };
+  if(!req.body.compagny_name_fillial){
+    return res.status(400).send({
+      message: 'compagny_name_fillial can not be empty'
+    });
+  }
+
+  if(!req.body.compagny_fillial){
+    return res.status(400).send({
+      message: 'compagny_fillial can not be empty'
+    });
+  }
+
+  if(!req.body.email){
+    return res.status(400).send({
+      message: 'email can not be empty'
+    });
+  }
+
+  if(!req.body.password){
+    return res.status(400).send({
+      message: 'password can not be empty'
+    });
+  }
+
+  if(!req.body.phone){
+    return res.status(400).send({
+      message: 'phone can not be empty'
+    });
+  }
+
+  if(!req.body.siret){
+    return res.status(400).send({
+      message: 'siret can not be empty'
+    });
+  }
+
+  if(!req.body.compagny_type){
+    return res.status(400).send({
+      message: 'compagny_type can not be empty'
+    });
+  }
+
+  if(!req.body.location){
+    return res.status(400).send({
+      message: 'location can not be empty'
+    });
+  }
+
+  User.updateOne({ _id: req.body.id }, 
+    { $set: {                    
+      compagny_name_fillial: req.body.compagny_name_fillial,
+      compagny_fillial: req.body.compagny_fillial,
+      email: req.body.email,
+      password: req.body.password,
+      phone: req.body.phone,
+      siret: req.body.siret,
+      compagny_type: req.body.compagny_type,
+      location: req.body.location
+      } 
+    })
+  .then(result => {
+    if (!result) {
+      return res.status(404).send({
+        message: 'User not found with id : ' + req.body.id
+      });
+    }
+    res.send({ message: result });
+  })
+  .catch(err => {
+    if (err.kind === 'ObjectId' || err.name === 'NotFound') {
+      return res.status(404).send({
+        message: 'User not found with id ' + req.body.id
+      });
+    }
+    return res.status(500).send({
+      message: 'User not update with id ' + req.body.id + ' and error : ' + err.message
+    });
+  });
+}
