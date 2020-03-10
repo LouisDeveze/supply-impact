@@ -9,4 +9,6 @@ router.get('/email', admin.findOne);
 
 router.put('/', admin.create);
 
+router.delete('/:adminId', admin.delete);
+
 module.exports = router;
