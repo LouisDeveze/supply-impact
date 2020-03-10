@@ -9,4 +9,6 @@ router.put('/', modelProduit.create);
 
 router.delete('/:modelProduitId', modelProduit.delete);
 
+router.post('/all', modelProduit.updateAll);
+
 module.exports = router;
