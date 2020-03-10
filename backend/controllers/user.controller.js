@@ -23,12 +23,14 @@ exports.findOne = (req, res) => {
     if(req.body.email){
       diffParams.email = req.body.email;
       console.log("Email : " + diffParams.email);
+      console.log("diffParams = " + diffParams);
     }else{
       return res.status(404).send({
         message: 'No email in the body for User findOne'
       });
     }
 
+    
     //on ne demande pas le password
     User.find(diffParams, {password : 0})
     .then(user => {

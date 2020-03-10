@@ -13,6 +13,55 @@ exports.findAll = (req, res) => {
     });
 };
 
+// Find every contract made by a user
+exports.findOne = (req, res) => {
+
+  //If id is pass in request
+  if(req.body){
+    var diffParamsID1 = {};
+    var diffParamsID2 = {};
+
+    if(req.body.userID){
+      //diffParamsID1.relation = {}
+      diffParamsID1.produitIn = req.body.userID;
+      diffParamsID2.produitOut = req.body.userID;
+      console.log("ID1 : " + diffParamsID1.produitIn);
+      console.log("ID2 : " + diffParamsID1.produitOut);
+    }else{
+      return res.status(404).send({
+        message: 'No IdUser in the body for contrat findOne'
+      });
+    }
+
+    //on ne demande pas le password
+    Contrat.find({$or : [diffParamsID1, diffParamsID2] }, {password : 0}) //on cherche pour le id1 AND id2
+    .then(contrat => {
+      if (!contrat) {
+        return res.status(404).send({
+          message: 'Contrat not found with thoses : ' + diffParams
+        });
+      }
+      
+      res.send(contrat);
+    })
+    .catch(err => {
+      if (err.kind === 'ObjectId') {
+        return res.status(404).send({
+          message: 'Contrat not found with thoses params ' +diffParams
+        });
+      }
+      return res.status(500).send({
+        message: 'Error retrieving contrat with thoses params' + diffParams
+      });
+    });
+  }
+  else{
+    return res.status(404).send({
+      message: 'No params in request'
+    });
+  }
+};
+
 // Create and Save a new Contrat
 exports.create = (req, res) => {
   if (!req.body.contrat) {
