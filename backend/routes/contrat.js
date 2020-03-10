@@ -9,4 +9,7 @@ router.put('/', contrat.create);
 
 router.delete('/:idContrat', contrat.delete);
 
+router.post('/all', contrat.updateAll);
+
+
 module.exports = router;
