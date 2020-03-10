@@ -143,11 +143,11 @@ exports.updateAll = (req, res) => {
   .catch(err => {
     if (err.kind === 'ObjectId' || err.name === 'NotFound') {
       return res.status(404).send({
-        message: 'Admin not found with id ' + req.body.adminId
+        message: 'Admin not found with id ' + req.body.id
       });
     }
     return res.status(500).send({
-      message: 'Admin not update with id ' + req.body.adminId + ' and error : ' + err.message
+      message: 'Admin not update with id ' + req.body.id + ' and error : ' + err.message
     });
   });
 
