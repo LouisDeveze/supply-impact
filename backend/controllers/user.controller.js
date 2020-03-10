@@ -13,6 +13,52 @@ exports.findAll = (req, res) => {
     });
 };
 
+// Find a single User with an email
+exports.findOne = (req, res) => {
+
+  //If id is pass in request
+  if(req.body){
+    var diffParams = {};
+
+    if(req.body.email){
+      diffParams.email = req.body.email;
+      console.log("Email : " + diffParams.email);
+    }else{
+      return res.status(404).send({
+        message: 'No email in the body for User findOne'
+      });
+    }
+
+    //on ne demande pas le password
+    User.find(diffParams, {password : 0})
+    .then(user => {
+      if (!user) {
+        return res.status(404).send({
+          message: 'User not found with thoses : ' + diffParams
+        });
+      }
+      
+      res.send(user[0]);
+    })
+    .catch(err => {
+      if (err.kind === 'ObjectId') {
+        return res.status(404).send({
+          message: 'User not found with thoses params ' +diffParams
+        });
+      }
+      return res.status(500).send({
+        message: 'Error retrieving user with thoses params' + diffParams
+      });
+    });
+  }
+  else{
+    return res.status(404).send({
+      message: 'No params in request'
+    });
+  }
+};
+
+
 // Create and Save a new User
 exports.create = (req, res) => {
   // Validate request
