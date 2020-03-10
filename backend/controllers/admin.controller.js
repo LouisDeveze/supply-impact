@@ -13,28 +13,28 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Create and Save a new User
+// Create and Save a new Admin
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.username) {
     // If firstName is not present in body reject the request by
     // sending the appropriate http code
     return res.status(400).send({
-      message: 'compagny_name_fillial can not be empty'
+      message: 'userName can not be empty'
     });
   }
   if (!req.body.password) {
     // If firstName is not present in body reject the request by
     // sending the appropriate http code
     return res.status(400).send({
-      message: 'email can not be empty'
+      message: 'password can not be empty'
     });
   }
   if (!req.body.email_contact) {
     // If firstName is not present in body reject the request by
     // sending the appropriate http code
     return res.status(400).send({
-      message: 'password can not be empty'
+      message: 'email can not be empty'
     });
   }
   if (!req.body.phone) {
@@ -52,20 +52,65 @@ exports.create = (req, res) => {
     phone : req.body.phone
     });
 
-  // Save User in the database
+  // Save Admin in the database
   admin
     .save()
     .then(data => {
-      // we wait for insertion to be complete and we send the newly user integrated
+      // we wait for insertion to be complete and we send the newly admin integrated
       res.send(data);
     })
     .catch(err => {
-      // In case of error during insertion of a new user in database we send an
+      // In case of error during insertion of a new admin in database we send an
       // appropriate message
       res.status(500).send({
-        message: err.message || 'Some error occurred while creating the User.'
+        message: err.message || 'Some error occurred while creating the Admin.'
       });
     });
+};
+
+// Find a single Admin with an email
+exports.findOne = (req, res) => {
+
+  //If id is pass in request
+  if(req.body){
+    var diffParams = {};
+
+    if(req.body.email_contact){
+      diffParams.email_contact = req.body.email_contact;
+      console.log("Email : " + diffParams.email_contact);
+    }else{
+      return res.status(404).send({
+        message: 'No email in the body for Admin findOne'
+      });
+    }
+
+    //on ne demande pas le password
+    Admin.find(diffParams, {password : 0})
+    .then(admin => {
+      if (!admin) {
+        return res.status(404).send({
+          message: 'Admin not found with thoses : ' + diffParams
+        });
+      }
+      
+      res.send(admin[0]);
+    })
+    .catch(err => {
+      if (err.kind === 'ObjectId') {
+        return res.status(404).send({
+          message: 'Admin not found with thoses params ' +diffParams
+        });
+      }
+      return res.status(500).send({
+        message: 'Error retrieving admin with thoses params' + diffParams
+      });
+    });
+  }
+  else{
+    return res.status(404).send({
+      message: 'No params in request'
+    });
+  }
 };
 
 
@@ -152,3 +197,4 @@ exports.updateAll = (req, res) => {
   });
 
 }
+
