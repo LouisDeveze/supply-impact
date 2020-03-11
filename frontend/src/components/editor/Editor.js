@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import "./editor.css"
 
 export default class Editor extends Component{
 
@@ -11,7 +11,9 @@ export default class Editor extends Component{
 
     render() {
         return (
-            <div style={{backgroundColor: "#aa0000", height:"30px"}}>Coucou</div>
+            <div className="editor" style={{width:"75%", height:"100%", display:"inline-block"}}>
+                Courouc
+            </div>
         );
     }
 }
