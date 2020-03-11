@@ -14,7 +14,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 class NavHome extends Component {
     constructor(props) {
         super(props);
-        this.user_id = JSON.parse(localStorage.getItem("user_id"));
+        this.user_id = "User_to_get";
         this.navRef = null;
         this.state = {
         showModal: false
@@ -31,51 +31,56 @@ class NavHome extends Component {
 
     render() {
     
-        const container = {height: 1300}
+        
         return(
-        <div>
-            <Router>
             <header>
-                <MDBNavbar color="indigo" dark expand="md" scrolling fixed="top">
+                <MDBNavbar color="indigo" dark expand="md"  style={{paddingTop:"0px", paddingBottom:"0px"}}>
                 <MDBNavbarBrand href="/">
-                    <strong><img src={logo} alt="Supply'Impact logo" style={{ width: "50px" }}></img></strong>
+                    <strong><img src={logo} alt="Supply'Impact logo" style={{ width: "30px" }}></img></strong>
                 </MDBNavbarBrand>
                 <MDBNavbarToggler onClick={ this.onClick } />
                 <MDBCollapse isOpen = { this.state.collapse } navbar>
                     <MDBNavbarNav left>
-                    <MDBNavItem active>
-                        <MDBNavLink to="#">Home</MDBNavLink>
-                    </MDBNavItem>
-                    <MDBNavItem>
-                        <MDBNavLink to="#">Features</MDBNavLink>
-                    </MDBNavItem>
-                    <MDBNavItem>
-                        <MDBNavLink to="#">Pricing</MDBNavLink>
-                    </MDBNavItem>
-                    <MDBNavItem>
-                        <MDBNavLink to="#">Options</MDBNavLink>
-                    </MDBNavItem>
+                        <MDBNavItem active>
+                            <MDBNavLink to="#">Home</MDBNavLink>
+                        </MDBNavItem>
+                        <MDBNavItem>
+                            <MDBDropdown>
+                                <MDBDropdownToggle nav caret>
+                                    Mes listes
+                                </MDBDropdownToggle>
+                                <MDBDropdownMenu className="dropdown-default">
+                                <MDBDropdownItem href="#!">Mes Produits</MDBDropdownItem>
+                                <MDBDropdownItem href="#!">Matière Première</MDBDropdownItem>
+                                <MDBDropdownItem href="#!">Fournisseurs</MDBDropdownItem>
+                                <MDBDropdownItem href="#!">Distributeurs</MDBDropdownItem>
+                                <MDBDropdownItem href="#!">Sous Traitants</MDBDropdownItem>
+                                </MDBDropdownMenu>
+                            </MDBDropdown>
+                        </MDBNavItem>
                     </MDBNavbarNav>
-                    <MDBNavItem right>
-                        <MDBDropdown>
-                            <MDBDropdownToggle nav caret>
-                            <MDBIcon icon="user" />
-                            </MDBDropdownToggle>
-                            <MDBDropdownMenu className="dropdown-default">
-                            <MDBDropdownItem href="#!">Action</MDBDropdownItem>
-                            <MDBDropdownItem href="#!">Another Action</MDBDropdownItem>
-                            <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                            <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                            </MDBDropdownMenu>
-                        </MDBDropdown>
-                    </MDBNavItem>
+
+
+                    <MDBNavbarNav right>
+
+                        <MDBNavItem >
+                            <MDBDropdown>
+                                <MDBDropdownToggle nav caret>
+                                <MDBIcon icon="user" />
+                                </MDBDropdownToggle>
+                                <MDBDropdownMenu right basic className="dropdown-default">
+                                <MDBDropdownItem href="#!">Notifications</MDBDropdownItem>
+                                <MDBDropdownItem href="#!">Profil/Account</MDBDropdownItem>
+                                <MDBDropdownItem href="#!">Logout</MDBDropdownItem>
+                                </MDBDropdownMenu>
+                            </MDBDropdown>
+                        </MDBNavItem>
+
+                    </MDBNavbarNav>
                 </MDBCollapse>
                 </MDBNavbar>
             </header>
-            </Router>
-            
-        </div>
         );
     }
-    }
-export default withRouter(NavHome);
+}
+export default NavHome;
