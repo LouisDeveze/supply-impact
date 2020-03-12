@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import NavHome from "../components/nav/NavHome";
-import { MDBBox, MDBContainer,MDBCard,MDBCardTitle,MDBCardText,MDBRow,MDBCol, MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
+import { MDBContainer,MDBCard,MDBRow,MDBCol, MDBTable, MDBTableBody, MDBTableHead,  MDBBtn, MDBProgress} from 'mdbreact';
 import "./pages.css"
+import playButton from "../img/playButton.png";
 
 export default class MyProducts extends Component {
     constructor(props) {
@@ -36,30 +37,31 @@ export default class MyProducts extends Component {
                                         <tr>
                                             <td>name1</td>
                                             <td>sup</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>delete</td>
+                                            <td><a href="google.com"><img src={playButton} alt="play'button" style={{ width: "30px" }}></img></a></td>
+                                            <td> <MDBProgress value={70} className="my-2" /></td>
+                                            <td><MDBBtn outline color="danger">Delete</MDBBtn></td>
                                         </tr>
                                         <tr>
                                             <td>name2</td>
                                             <td>sup</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>delete</td>
+                                            <td><a href="google.com"><img src={playButton} alt="play'button" style={{ width: "30px" }}></img></a></td>
+                                            <td> <MDBProgress value={30} className="my-2" /></td>
+                                            <td><MDBBtn outline color="danger">Delete</MDBBtn></td>
                                         </tr>
                                         <tr>
                                             <td>name3</td>
                                             <td>sup</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>delete</td>
+                                            <td><a href="google.com"><img src={playButton} alt="play'button" style={{ width: "30px" }}></img></a></td>
+                                            <td> <MDBProgress value={50} className="my-2" /></td>
+                                            <td><MDBBtn outline color="danger">Delete</MDBBtn></td>
                                         </tr>
                                     </MDBTableBody>
                                 </MDBTable>
                             </MDBCard>
                         </MDBCol>
-                    </MDBRow>
-                </MDBContainer>
+                    </MDBRow> 
+                    <MDBBtn color="primary" style={{float:"right"}}>Add</MDBBtn>
+                </MDBContainer>             
             </div> 
         </div>
      );
