@@ -18,25 +18,15 @@ exports.findOne = (req, res) => {
 
   //If id is pass in request
   if(req.body){
-    var diffParamsID1 = {};
-    var diffParamsID2 = {};
 
     if(req.body.userID){
-      diffParamsID1.relation = {id1 : req.body.userID};
-      diffParamsID2.relation = {id2 : req.body.userID};
-      console.log("ID1 : " + diffParamsID1.relation.id1);
-      console.log("ID2 : " + diffParamsID2.relation.id2);
     }else{
       return res.status(404).send({
         message: 'No IdUser in the body for contrat findOne'
       });
     }
 
-    console.log("ID1 : " + diffParamsID1.relation.id1);
-    console.log("ID2 : " + diffParamsID2.relation.id2);
-
     //on ne demande pas le password
-    //Contrat.find({$or : [diffParamsID1, diffParamsID2] }, {password : 0}) //on cherche pour le id1 OR id2
     Contrat.find({$or : [{"relation.id1" : req.body.userID},{"relation.id2" : req.body.userID}] }, {password : 0}) //on cherche pour le id1 OR id2
     .then(contrat => {
       if (!contrat) {

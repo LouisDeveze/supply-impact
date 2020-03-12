@@ -13,6 +13,29 @@ exports.findAll = (req, res) => {
     });
 };
 
+//Find a modelProduit by its ID
+exports.findOne = (req, res) => {
+  ModelProduit.findById(req.body.produitID)
+    .then(modelProduit => {
+      if (!modelProduit) {
+        return res.status(404).send({
+          message: 'modelProduit not found with id ' + req.body.produitID
+        });
+      }
+      res.send(modelProduit);
+    })
+    .catch(err => {
+      if (err.kind === 'ObjectId') {
+        return res.status(404).send({
+          message: 'modelProduit not found with id ' + req.body.produitID
+        });
+      }
+      return res.status(500).send({
+        message: 'Error retrieving modelProduit with id ' + req.body.produitID
+      });
+    });
+};
+
 // Create and Save a new User
 exports.create = (req, res) => {
   // Validate request

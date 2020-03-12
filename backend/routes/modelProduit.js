@@ -5,6 +5,8 @@ var modelProduit = require('../controllers/modelProduit.controller');
 /* GET users listing. */
 router.get('/', modelProduit.findAll);
 
+router.get('/ID', modelProduit.findOne);
+
 router.put('/', modelProduit.create);
 
 router.delete('/:modelProduitId', modelProduit.delete);
