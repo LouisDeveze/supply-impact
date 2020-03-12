@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import NavHome from "../components/nav/NavHome";
 import { Pie } from "react-chartjs-2";
-import { MDBBox, MDBContainer,MDBCard,MDBCardTitle,MDBCardText,MDBRow,MDBCol } from 'mdbreact';
+import { MDBBox, MDBContainer,MDBCard,MDBCardTitle,MDBCardText,MDBRow,MDBCol,MDBBtn  } from 'mdbreact';
 import "./pages.css"
 
 export default class Profil extends Component {
@@ -29,12 +29,13 @@ export default class Profil extends Component {
                                 
                                 <MDBRow >
                                     <MDBCol sm="12">
-                                        <MDBCard className="card-body" style={{ width: "100%", marginTop: "1rem" }}>
-                                            <MDBCardTitle>Infos</MDBCardTitle>
-                                            <MDBCardText>
-                                                {this.data.nbFourn}
-                                            </MDBCardText>
-                                        </MDBCard>
+
+                                        <h2> Infos </h2>
+                                        <p>Nom : {this.data.name}</p>
+                                        <p>Nom : {this.data.name}</p>
+                                        <p>Adress : {this.data.name}</p>
+                                        <p>Nm de siret : {this.data.name}</p>
+                                        
 
                                     </MDBCol>
                                 </MDBRow>
@@ -42,10 +43,23 @@ export default class Profil extends Component {
 
                                     <MDBCol sm="12">
                                         <MDBCard className="card-body" style={{ width: "100%", height:"100%", marginTop: "1rem" }}>
-                                            <MDBCardTitle>MDP</MDBCardTitle>
-                                            <MDBCardText>
-
-                                            </MDBCardText>
+                                            <MDBCardTitle>Changement du mot de passe</MDBCardTitle>
+                                            <form>
+                                                <label htmlFor="defaultFormRegisterConfirmEx" className="grey-text">
+                                                Old password
+                                                </label>
+                                                <input type="email" id="defaultFormRegisterConfirmEx" className="form-control" />
+                                                <br />
+                                                <label htmlFor="defaultFormRegisterPasswordEx" className="grey-text">
+                                                New password
+                                                </label>
+                                                <input type="password" id="defaultFormRegisterPasswordEx" className="form-control" />
+                                                <div className="text-center mt-4">
+                                                <MDBBtn color="unique" type="submit">
+                                                    Submit
+                                                </MDBBtn>
+                                                </div>
+                                            </form>
                                         </MDBCard>
                                     </MDBCol>
                                     
@@ -56,14 +70,9 @@ export default class Profil extends Component {
                                 <MDBCard className="card-body" style={{ width: "100%", height:"100%", marginTop: "1rem" }}>
                                     <MDBCardTitle>PP</MDBCardTitle>
                                     <MDBCardText>
-                                        caroussel
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
+                                        <img src="https://mdbootstrap.com/img/Photos/Avatars/img(31).jpg" className="img-fluid z-depth-1 rounded-circle " alt="" />
+                                        <p>d</p>
+                                        <p>d</p>
                                     </MDBCardText>
                                 </MDBCard>
 

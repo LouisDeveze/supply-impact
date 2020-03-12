@@ -1,9 +1,15 @@
+body {
+	margin: 0;
+}
 
 .Home {
     background-color: blanchedalmond;
     display: flex;
 	flex-direction: column;
 	min-height: 100vh;
+	overflow-y: auto;	
+}
+.card-body{
 	overflow-y: auto;
 }
 

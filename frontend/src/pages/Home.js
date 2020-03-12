@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import NavHome from "../components/nav/NavHome";
 import { Pie } from "react-chartjs-2";
-import { MDBBox, MDBContainer,MDBCard,MDBCardTitle,MDBCardText,MDBRow,MDBCol,MDBCardGroup,MDBCardBody } from 'mdbreact';
+import { MDBBox, MDBContainer,MDBCard,MDBCardTitle,MDBCardText,MDBRow,MDBCol,MDBCardGroup,MDBCardBody,MDBScrollbar  } from 'mdbreact';
 import "./pages.css"
 
 export default class Home extends Component {
@@ -53,7 +53,7 @@ export default class Home extends Component {
                             <MDBCol sm="6">
                                 <MDBRow >
                                         <MDBCol sm="6">
-                                            <MDBCard className="card-bodyd" style={{ width: "100%", marginTop: "1rem" }}>
+                                            <MDBCard className="card-body" style={{ width: "100%", marginTop: "1rem" }}>
                                                 <MDBCardBody>
                                                     <MDBCardTitle>Nombre de Fournisseurs</MDBCardTitle>
                                                     <MDBCardText>
@@ -64,7 +64,7 @@ export default class Home extends Component {
                                         </MDBCol>
 
                                         <MDBCol sm="6">
-                                            <MDBCard className="card-bodyd" style={{ width: "100%", marginTop: "1rem" }}>
+                                            <MDBCard className="card-body" style={{ width: "100%", marginTop: "1rem" }}>
                                                 <MDBCardBody>
                                                     <MDBCardTitle>Nombre de Produits</MDBCardTitle>
                                                     <MDBCardText>
@@ -90,7 +90,7 @@ export default class Home extends Component {
                             </MDBCol>
 
                             <MDBCol sm="6">
-                                <MDBCard className="card-body" style={{ height:"100%", marginTop: "1rem", overflow:"hidden" }}>
+                                <MDBCard className="card-body overflow-auto" style={{ height:"100%", marginTop: "1rem", overflow:"hidden" }}>
                                     <MDBCardTitle>caroussel dernier produits add</MDBCardTitle>
                                     <MDBCardText>
                                         caroussel
@@ -102,36 +102,8 @@ export default class Home extends Component {
                                             <p>d</p>
                                             <p>d</p>
                                             <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
                                     </MDBCardText>
                                 </MDBCard>
-
                             </MDBCol>
                         </MDBRow>
                     </MDBContainer>
