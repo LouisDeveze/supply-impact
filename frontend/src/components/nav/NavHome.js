@@ -42,7 +42,7 @@ class NavHome extends Component {
                 <MDBCollapse isOpen = { this.state.collapse } navbar>
                     <MDBNavbarNav left>
                         <MDBNavItem active>
-                            <MDBNavLink to="#">Home</MDBNavLink>
+                            <MDBNavLink to="/home">Home</MDBNavLink>
                         </MDBNavItem>
                         <MDBNavItem>
                             <MDBDropdown>
@@ -70,7 +70,7 @@ class NavHome extends Component {
                                 </MDBDropdownToggle>
                                 <MDBDropdownMenu right basic className="dropdown-default">
                                 <MDBDropdownItem href="#!">Notifications</MDBDropdownItem>
-                                <MDBDropdownItem href="#!">Profil/Account</MDBDropdownItem>
+                                <MDBDropdownItem href="/profil">Profil/Account</MDBDropdownItem>
                                 <MDBDropdownItem href="#!">Logout</MDBDropdownItem>
                                 </MDBDropdownMenu>
                             </MDBDropdown>
