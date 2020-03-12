@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import logo from "../../img/logo.png";
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav,
      MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, 
-     MDBIcon, MDBDropdown, MDBDropdownToggle,MDBDropdownMenu, MDBDropdownItem } from 'mdbreact';
+     MDBIcon, MDBDropdown, MDBDropdownToggle,MDBDropdownMenu, MDBDropdownItem,
+     MDBPopover, MDBPopoverBody, MDBPopoverHeader } from 'mdbreact';
 import { withRouter } from "react-router-dom";
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -27,8 +28,7 @@ class NavHome extends Component {
     toggleCollapse = () => {
     this.setState({ isOpen: !this.state.isOpen });
     }
-
-
+    
     render() {
     
         
@@ -50,7 +50,7 @@ class NavHome extends Component {
                                     Mes listes
                                 </MDBDropdownToggle>
                                 <MDBDropdownMenu className="dropdown-default">
-                                <MDBDropdownItem href="#!">Mes Produits</MDBDropdownItem>
+                                <MDBDropdownItem href="/MyProducts">Mes Produits</MDBDropdownItem>
                                 <MDBDropdownItem href="#!">Matière Première</MDBDropdownItem>
                                 <MDBDropdownItem href="#!">Fournisseurs</MDBDropdownItem>
                                 <MDBDropdownItem href="#!">Distributeurs</MDBDropdownItem>
@@ -69,9 +69,29 @@ class NavHome extends Component {
                                 <MDBIcon icon="user" />
                                 </MDBDropdownToggle>
                                 <MDBDropdownMenu right basic className="dropdown-default">
-                                <MDBDropdownItem href="#!">Notifications</MDBDropdownItem>
-                                <MDBDropdownItem href="/profil">Profil/Account</MDBDropdownItem>
-                                <MDBDropdownItem href="#!">Logout</MDBDropdownItem>
+
+                                <MDBPopover
+                                placement="left"
+                                container="ancestor"
+                                popover
+                                clickable
+                                id="popper4"
+                                >
+                                    <MDBDropdownItem href="#!"><MDBIcon icon="circle" fixed /> Notifications</MDBDropdownItem>
+                                    <div style={{  }} >
+                                        <MDBPopoverHeader>Notifications</MDBPopoverHeader>
+                                        <MDBPopoverBody>
+                                            1er Notification
+                                        </MDBPopoverBody>
+                                    </div>
+                                </MDBPopover>
+
+
+                             
+
+                                <MDBDropdownItem href="/profil"><MDBIcon icon="user" fixed /> Profil/Account</MDBDropdownItem>
+                                <MDBDropdownItem href="#!"><MDBIcon icon="cog" fixed />  Settings</MDBDropdownItem>
+                                <MDBDropdownItem href="#!"><MDBIcon icon="sign-out-alt" fixed /> Logout</MDBDropdownItem>
                                 </MDBDropdownMenu>
                             </MDBDropdown>
                         </MDBNavItem>

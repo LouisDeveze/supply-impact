@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import NavHome from "../components/nav/NavHome";
 import { Pie } from "react-chartjs-2";
-import { MDBBox, MDBContainer,MDBCard,MDBCardTitle,MDBCardText,MDBRow,MDBCol,MDBCardGroup,MDBCardBody,MDBScrollbar  } from 'mdbreact';
+import { MDBBox, MDBContainer,MDBCard,MDBCardTitle,MDBCardText,MDBRow,MDBCol,MDBCardGroup,MDBCardBody,MDBScrollbar,
+    MDBCarousel, MDBCarouselInner, MDBCarouselItem,MDBView  } from 'mdbreact';
 import "./pages.css"
 
 export default class Home extends Component {
@@ -92,17 +93,44 @@ export default class Home extends Component {
                             <MDBCol sm="6">
                                 <MDBCard className="card-body overflow-auto" style={{ height:"100%", marginTop: "1rem", overflow:"hidden" }}>
                                     <MDBCardTitle>caroussel dernier produits add</MDBCardTitle>
-                                    <MDBCardText>
-                                        caroussel
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                            <p>d</p>
-                                    </MDBCardText>
+                                    <MDBCarousel
+                                        activeItem={1}
+                                        length={3}
+                                        showControls={true}
+                                        showIndicators={true}
+                                        className="z-depth-1"
+                                        
+                                    >
+                                        <MDBCarouselInner>
+                                        <MDBCarouselItem itemId="1">
+                                            <MDBView>
+                                            <img
+                                                className="d-block w-100"
+                                                src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg"
+                                                alt="First slide"
+                                            />
+                                            </MDBView>
+                                        </MDBCarouselItem>
+                                        <MDBCarouselItem itemId="2">
+                                            <MDBView>
+                                            <img
+                                                className="d-block w-100"
+                                                src="https://mdbootstrap.com/img/Photos/Slides/img%20(46).jpg"
+                                                alt="Second slide"
+                                            />
+                                            </MDBView>
+                                        </MDBCarouselItem>
+                                            <MDBCarouselItem itemId="3">
+                                                <MDBView>
+                                                <img
+                                                    className="d-block w-100"
+                                                    src="https://mdbootstrap.com/img/Photos/Slides/img%20(47).jpg"
+                                                    alt="Third slide"
+                                                />
+                                                </MDBView>
+                                            </MDBCarouselItem>
+                                        </MDBCarouselInner>
+                                    </MDBCarousel>
                                 </MDBCard>
                             </MDBCol>
                         </MDBRow>

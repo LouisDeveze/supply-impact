@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import NavHome from "../components/nav/NavHome";
 import { Pie } from "react-chartjs-2";
-import { MDBBox, MDBContainer,MDBCard,MDBCardTitle,MDBCardText,MDBRow,MDBCol,MDBBtn  } from 'mdbreact';
+import { MDBBox, MDBContainer,MDBCard,MDBCardTitle,MDBCardText,MDBRow,MDBCol,MDBBtn} from 'mdbreact';
 import "./pages.css"
 
 export default class Profil extends Component {
@@ -21,7 +21,7 @@ export default class Profil extends Component {
                 <div className="site-content">
                     <NavHome />
 
-                    <h1 className="global_title_1">My Profil ({this.data.name})</h1>
+                    <h1 className="global_title_1 text-center">My Profil ({this.data.name})</h1>
 
                     <MDBContainer fluid  style={{ height:"100%"}} >
                         <MDBRow >
@@ -55,7 +55,7 @@ export default class Profil extends Component {
                                                 </label>
                                                 <input type="password" id="defaultFormRegisterPasswordEx" className="form-control" />
                                                 <div className="text-center mt-4">
-                                                <MDBBtn color="unique" type="submit">
+                                                <MDBBtn color="indigo" type="submit">
                                                     Submit
                                                 </MDBBtn>
                                                 </div>
@@ -68,11 +68,31 @@ export default class Profil extends Component {
 
                             <MDBCol sm="6">
                                 <MDBCard className="card-body" style={{ width: "100%", height:"100%", marginTop: "1rem" }}>
-                                    <MDBCardTitle>PP</MDBCardTitle>
+                                    <MDBCardTitle className="text-center">Profil Picture</MDBCardTitle>
                                     <MDBCardText>
-                                        <img src="https://mdbootstrap.com/img/Photos/Avatars/img(31).jpg" className="img-fluid z-depth-1 rounded-circle " alt="" />
-                                        <p>d</p>
-                                        <p>d</p>
+
+                                        <img src="https://mdbootstrap.com/img/Photos/Avatars/img(31).jpg" className="img-fluid z-depth-1 rounded-circle mx-auto d-block" alt="" />
+                                        
+                                        <p></p>
+
+                                        <div className="input-group">
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text" id="inputGroupFileAddon01">
+                                                Upload new Profil Picture
+                                                </span>
+                                            </div>
+                                            <div className="custom-file">
+                                                <input
+                                                type="file"
+                                                className="custom-file-input"
+                                                id="inputGroupFile01"
+                                                aria-describedby="inputGroupFileAddon01"
+                                                />
+                                                <label className="custom-file-label" htmlFor="inputGroupFile01">
+                                                Choose file
+                                                </label>
+                                            </div>
+                                        </div>
                                     </MDBCardText>
                                 </MDBCard>
 
