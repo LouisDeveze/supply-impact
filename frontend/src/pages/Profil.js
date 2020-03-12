@@ -17,7 +17,7 @@ export default class Profil extends Component {
     
     render() {
         return (
-            <div className="Home" style={{width: "100%", height:"100%", paddingTop:"0px", paddingBottom:"0px"}}>
+            <div className="Pages" style={{width: "100%", height:"100%", paddingTop:"0px", paddingBottom:"0px"}}>
                 <div className="site-content">
                     <NavHome />
 

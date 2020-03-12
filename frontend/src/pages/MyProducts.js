@@ -12,7 +12,7 @@ export default class MyProducts extends Component {
  
     render() {
         return (
-            <div className="MyProducts">
+            <div className="Pages">
                 <div>
                     <NavHome />
                     <h1 className="global_title_1">My Products</h1>

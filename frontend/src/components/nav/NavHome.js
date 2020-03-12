@@ -42,7 +42,7 @@ class NavHome extends Component {
                 <MDBCollapse isOpen = { this.state.collapse } navbar>
                     <MDBNavbarNav left>
                         <MDBNavItem active>
-                            <MDBNavLink to="/home">Home</MDBNavLink>
+                            <MDBNavLink to="/Home">Home</MDBNavLink>
                         </MDBNavItem>
                         <MDBNavItem>
                             <MDBDropdown>
@@ -51,10 +51,10 @@ class NavHome extends Component {
                                 </MDBDropdownToggle>
                                 <MDBDropdownMenu className="dropdown-default">
                                 <MDBDropdownItem href="/MyProducts">Mes Produits</MDBDropdownItem>
-                                <MDBDropdownItem href="#!">Matière Première</MDBDropdownItem>
-                                <MDBDropdownItem href="#!">Fournisseurs</MDBDropdownItem>
-                                <MDBDropdownItem href="#!">Distributeurs</MDBDropdownItem>
-                                <MDBDropdownItem href="#!">Sous Traitants</MDBDropdownItem>
+                                <MDBDropdownItem href="/RawMaterials">Matière Première</MDBDropdownItem>
+                                <MDBDropdownItem href="/Suppliers">Fournisseurs</MDBDropdownItem>
+                                <MDBDropdownItem href="/Distributors">Distributeurs</MDBDropdownItem>
+                                <MDBDropdownItem href="/Subcontractors">Sous Traitants</MDBDropdownItem>
                                 </MDBDropdownMenu>
                             </MDBDropdown>
                         </MDBNavItem>
@@ -89,7 +89,7 @@ class NavHome extends Component {
 
                              
 
-                                <MDBDropdownItem href="/profil"><MDBIcon icon="user" fixed /> Profil/Account</MDBDropdownItem>
+                                <MDBDropdownItem href="/Profil"><MDBIcon icon="user" fixed /> Profil/Account</MDBDropdownItem>
                                 <MDBDropdownItem href="#!"><MDBIcon icon="cog" fixed />  Settings</MDBDropdownItem>
                                 <MDBDropdownItem href="#!"><MDBIcon icon="sign-out-alt" fixed /> Logout</MDBDropdownItem>
                                 </MDBDropdownMenu>

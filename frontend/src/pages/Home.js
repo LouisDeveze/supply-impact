@@ -43,7 +43,7 @@ export default class Home extends Component {
     
     render() {
         return (
-            <div className="Home" style={{width: "100%", height:"100%", paddingTop:"0px", paddingBottom:"0px"}}>
+            <div className="Pages" style={{width: "100%", height:"100%", paddingTop:"0px", paddingBottom:"0px"}}>
                 <div className="site-content">
                     <NavHome />
 
@@ -79,7 +79,7 @@ export default class Home extends Component {
 
                                 <MDBCol sm="12">
                                     <MDBCard className="card-body" style={{ width: "100%", height:"100%", marginTop: "1rem" }}>
-                                        <MDBCardTitle>camembert stat produits</MDBCardTitle>
+                                        <MDBCardTitle>Statistiques de mes produits</MDBCardTitle>
                                         <MDBCardText>
 
                                             <Pie data={this.state.dataPie} options={{ responsive: true }} />
@@ -92,7 +92,7 @@ export default class Home extends Component {
 
                             <MDBCol sm="6">
                                 <MDBCard className="card-body overflow-auto" style={{ height:"100%", marginTop: "1rem", overflow:"hidden" }}>
-                                    <MDBCardTitle>caroussel dernier produits add</MDBCardTitle>
+                                    <MDBCardTitle>Mes derniers produits ajoutés</MDBCardTitle>
                                     <MDBCarousel
                                         activeItem={1}
                                         length={3}
