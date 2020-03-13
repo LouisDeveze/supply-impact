@@ -12,7 +12,9 @@ const adminSchema = new mongoose.Schema(
     },
     email_contact : {
       type: String,
-      required: true
+      required: true,
+      unique: true,
+      dropDups: true
     },
     phone : {
         type: String,

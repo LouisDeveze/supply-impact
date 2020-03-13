@@ -13,4 +13,5 @@ router.delete('/:adminId', admin.delete);
 
 router.post('/all', admin.updateAll);
 
+
 module.exports = router;
