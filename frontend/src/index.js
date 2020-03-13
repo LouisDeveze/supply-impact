@@ -15,8 +15,8 @@ const routing = (
     <Router>
       <div id="routing-container">
         <Switch>
-          <Route path="/" exact component={SignUp}></Route>
-          <Route path="/signin" component={Login}></Route>
+          <Route path="/" exact component={Login}></Route>
+          <Route path="/signin" component={SignUp}></Route>
         </Switch>
       </div>
     </Router>

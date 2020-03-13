@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import axios from 'axios';
 //import { Link } from "react-router-dom";
 import { MDBRow, MDBCard, MDBBtn, MDBContainer } from "mdbreact";
+
+const API_URL = 'http://localhost:3000/';
 
 class Login extends Component {
 
@@ -9,12 +12,39 @@ class Login extends Component {
     this.state = {
       email: null,
       password: null,
-      message: null
+      message: null,
+
+      admin: [],
+      users: [],
     }
   }
 
-  changeHandler = event => {
-    this.setState({ [event.target.name]: event.target.value });
+  async componentDidMount() {
+    var admins = [];
+    const res = await axios.get(API_URL+"admin")
+        admins = res.data;
+        console.log(admins)
+        this.setState({admin : admins})
+  }
+
+  submitHandler() {
+    console.log("Email : " + this.state.email)
+    console.log("Password : " + this.state.password)
+  }
+
+  changeHandler = (type, e) => {
+    switch (type) {
+      case 'email':
+        this.setState({email: e.target.value});
+        console.log("email " + this.state.email)
+        break;
+      case 'password':
+        this.setState({password: e.target.value});
+        console.log("password " + this.state.password)
+        break;
+      default:
+        break;
+    }
   };
 
   render() {
@@ -40,7 +70,7 @@ class Login extends Component {
             </label>
             <input
               value={this.state.email}
-              onChange={this.changeHandler}
+              onChange={(e) => this.changeHandler('email',e)}
               type="email"
               placeholder="Email"
               required>
@@ -56,21 +86,18 @@ class Login extends Component {
             </label>
             <input
               value={this.state.password}
-              onChange={this.changeHandler}
+              onChange={(e) => this.changeHandler('password',e)}
               type="password"
               placeholder="Password"
               required>
             </input>
           </div>
         </MDBRow>
-        <MDBBtn color="primary" type="submit">
+        <MDBBtn color="primary" onClick={this.submitHandler}>
             Connect
         </MDBBtn>
-        <MDBBtn color="secondary" type="submit">
-            Create a Supplier Account
-        </MDBBtn>
-        <MDBBtn color="secondary" type="submit">
-            Create a Distributor Account
+        <MDBBtn color="secondary" onClick={this.submitHandler}>
+            Create an Account
         </MDBBtn>
         </form>
         </MDBCard>
