@@ -9,10 +9,9 @@ router.get('/email', admin.findOne);
 
 router.put('/', admin.create);
 
-// POST user by id
-router.post("/:adminId", admin.update);
+router.delete('/:adminId', admin.delete);
 
-// DELETE user by id
-router.delete("/:userId", admin.delete);
+router.post('/all', admin.updateAll);
+
 
 module.exports = router;

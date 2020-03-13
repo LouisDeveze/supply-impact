@@ -7,6 +7,11 @@ router.get('/', user.findAll);
 
 router.get('/email', user.findOne);
 
+router.delete('/:userId', user.delete);
+
 router.put('/', user.create);
+
+router.post('/all', user.updateAll);
+
 
 module.exports = router;

@@ -113,60 +113,88 @@ exports.findOne = (req, res) => {
   }
 };
 
-/*
 
-// Update an Admin identified by the AdminId in the request
-exports.update = (req, res) => {
-  // Validate Request
-  if (!req.body.adminId) {
+exports.delete = (req, res) => {
+
+  Admin.findByIdAndRemove(req.params.adminId)
+    .then(admin => {
+      if (!admin) {
+        return res.status(404).send({
+          message: 'Admin not found with id ' + req.params.adminId
+        });
+      }
+      res.send({ message: 'Admin deleted successfully!' });
+    })
+    .catch(err => {
+      if (err.kind === 'ObjectId' || err.name === 'NotFound') {
+        return res.status(404).send({
+          message: 'Admin not found with id ' + req.params.adminId
+        });
+      }
+      return res.status(500).send({
+        message: 'Admin not delete user with id ' + req.params.adminId
+      });
+    });
+};
+
+exports.updateAll = (req, res) => {
+
+  if(!req.body.id){
     return res.status(400).send({
-      message: 'adminId can not be empty'
+      message: 'id can not be empty'
     });
   }
 
-  admin.findById(req.body.userId).lean()
-    .then(user => {
-      if (!user) {
-        return res.status(404).send({
-          message: 'User not found with id ' + req.body.userId
-        });
-      }else{
-        const userReceived = req.body;
-        const newUser = Object.assign({}, user, userReceived);
-        delete newUser.userId;
-        newUser.personsInHouse = Number(newUser.personsInHouse);
-        
-        // Find user and update it with the request body
-        User.findByIdAndUpdate(
-          req.body.userId,
-          {$set: {
-            location: newUser.location,
-            personsInHouse: newUser.personsInHouse,
-            houseSize: newUser.houseSize
-          }},
-          { new: true }
-        )
-          .then(userMod => {
-            if (!userMod) {
-              return res.status(404).send({
-                message: 'User not found with id ' + req.body.userId
-              });
-            }
-            res.send(userMod);
-          })
-          .catch(err => {
-            if (err.kind === 'ObjectId') {
-              return res.status(404).send({
-                message: 'User not found with id ' + req.body.userId
-              });
-            }
-            return res.status(500).send({
-              message: 'Error updating user with id ' + req.body.userId
-            });
-          });
-      }
-        
-  })
-};
+  if(!req.body.phone){
+    return res.status(400).send({
+      message: 'phone can not be empty'
+    });
+  }
 
-*/
+  if(!req.body.email_contact){
+    return res.status(400).send({
+      message: 'email_contact can not be empty'
+    });
+  }
+
+  if(!req.body.password){
+    return res.status(400).send({
+      message: 'password can not be empty'
+    });
+  }
+
+  if(!req.body.username){
+    return res.status(400).send({
+      message: 'username can not be empty'
+    });
+  }
+
+  Admin.updateOne({ _id: req.body.id }, 
+    { $set: {                    
+       phone: req.body.phone,
+       email_contact: req.body.email_contact,
+       password: req.body.password,
+       username: req.body.username
+      } 
+    })
+  .then(result => {
+    if (!result) {
+      return res.status(404).send({
+        message: 'Admin not found with id : ' + req.body.id
+      });
+    }
+    res.send({ message: result });
+  })
+  .catch(err => {
+    if (err.kind === 'ObjectId' || err.name === 'NotFound') {
+      return res.status(404).send({
+        message: 'Admin not found with id ' + req.body.id
+      });
+    }
+    return res.status(500).send({
+      message: 'Admin not update with id ' + req.body.id + ' and error : ' + err.message
+    });
+  });
+
+}
+
