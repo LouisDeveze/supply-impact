@@ -27,9 +27,8 @@ export default class RawMaterials extends Component {
                                     <MDBTableHead>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Supplier</th>
-                                            <th>GotoProcess</th>
-                                            <th>Status</th>
+                                            <th>Supplier/Sucontractor</th>
+                                            <th>Product destination</th>
                                             <th>Edit</th>
                                         </tr>
                                     </MDBTableHead>
@@ -37,22 +36,19 @@ export default class RawMaterials extends Component {
                                         <tr>
                                             <td>name1</td>
                                             <td>sup</td>
-                                            <td><a href="google.com"><img src={playButton} alt="play'button" style={{ width: "30px" }}></img></a></td>
-                                            <td> <MDBProgress value={70} className="my-2" /></td>
+                                            <td>product3</td>
                                             <td><MDBBtn outline color="danger">Delete</MDBBtn></td>
                                         </tr>
                                         <tr>
                                             <td>name2</td>
                                             <td>sup</td>
-                                            <td><a href="google.com"><img src={playButton} alt="play'button" style={{ width: "30px" }}></img></a></td>
-                                            <td> <MDBProgress value={30} className="my-2" /></td>
+                                            <td>product1</td>
                                             <td><MDBBtn outline color="danger">Delete</MDBBtn></td>
                                         </tr>
                                         <tr>
                                             <td>name3</td>
                                             <td>sup</td>
-                                            <td><a href="google.com"><img src={playButton} alt="play'button" style={{ width: "30px" }}></img></a></td>
-                                            <td> <MDBProgress value={50} className="my-2" /></td>
+                                            <td>product2</td>
                                             <td><MDBBtn outline color="danger">Delete</MDBBtn></td>
                                         </tr>
                                     </MDBTableBody>

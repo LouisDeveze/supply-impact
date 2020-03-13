@@ -4,6 +4,7 @@ import { Pie } from "react-chartjs-2";
 import { MDBBox, MDBContainer,MDBCard,MDBCardTitle,MDBCardText,MDBRow,MDBCol,MDBCardGroup,MDBCardBody,MDBScrollbar,
     MDBCarousel, MDBCarouselInner, MDBCarouselItem,MDBView  } from 'mdbreact';
 import "./pages.css"
+import APIManagement from "../API/ApiManager.js";
 
 export default class Home extends Component {
     constructor(props) {
@@ -46,6 +47,7 @@ export default class Home extends Component {
             <div className="Pages" style={{width: "100%", height:"100%", paddingTop:"0px", paddingBottom:"0px"}}>
                 <div className="site-content">
                     <NavHome />
+                    ded {APIManagement.fetchAllUsers }
 
                     <h1 className="global_title_1">Welcome on Supply'Impact {this.data.name} !</h1>
 
