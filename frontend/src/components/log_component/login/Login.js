@@ -16,31 +16,62 @@ class Login extends Component {
 
       admin: [],
       users: [],
+
     }
+    this.submitHandler = this.submitHandler.bind(this);
+    this.checkUser = this.checkUser.bind(this);
   }
 
   async componentDidMount() {
-    var admins = [];
     const res = await axios.get(API_URL+"admin")
-        admins = res.data;
-        console.log(admins)
-        this.setState({admin : admins})
+        this.setState({admin : res.data})
+        console.log(this.state.admin)
+    const res2 = await axios.get(API_URL+"users")
+        this.setState({users : res2.data})
+        console.log(this.state.users)
   }
 
+  /*
+    Clicking the Connect button send the state email and password
+  */
   submitHandler() {
     console.log("Email : " + this.state.email)
     console.log("Password : " + this.state.password)
+
+    this.state.admin.forEach(x => console.log(x._id))
+    this.state.users.forEach(x => console.log(x._id))
+
+    if(this.checkUser()) {
+      console.log("True")
+    } else {
+      console.log("False")
+    }
+
+  }
+  /*
+    Check if the admin or the user does exist
+    return True or False
+  */
+  checkUser() {
+    let doesExit = false
+      this.state.admin.forEach(x => {
+        if(x.email === this.state.email) {
+          doesExit = true;
+        }
+      });
+      return doesExit;
   }
 
+  /*
+    Update the state email and password in the form
+  */
   changeHandler = (type, e) => {
     switch (type) {
       case 'email':
         this.setState({email: e.target.value});
-        console.log("email " + this.state.email)
         break;
       case 'password':
         this.setState({password: e.target.value});
-        console.log("password " + this.state.password)
         break;
       default:
         break;
