@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 //use 'http://' or 'https://' fix the problem of cross-origin permission
-const API_URI = 'http://localhost:3030';
+const API_URI = 'https://localhost:3000';
 
 class ApiManager {
 

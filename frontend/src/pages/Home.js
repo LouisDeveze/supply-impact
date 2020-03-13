@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import NavHome from "../components/nav/NavHome";
-import APIManagement from "../API/ApiManager.js";
+import ApiManager from "../API/ApiManager.js";
 import "./pages.css"
 
 import {EventEmitter} from "events";
@@ -15,16 +15,18 @@ let emitter = new EventEmitter;
 let EventFetchEnd = "fetch_end";
 
 class Fetcher {
-    manager = new APIManagement();
+    manager = new ApiManager;
     
     fetch(){
         this.dataExport = 0;
 
-        this.manager.fetchAllUsers().then(response => {emitter.emit(EventFetchEnd,response.data);})
+        this.manager.fetchAllUsers().then(response => {emitter.emit(EventFetchEnd,response.dataExport);})
             .catch(err => {
                 console.error('pb de merde', err);
             })
-        }
+
+    console.log(this.dataExport);
+    }
 }
 
 
@@ -75,13 +77,14 @@ export default class Home extends Component {
     }
 
     render() {
-        //console.log(this.dataAPI[0]);
-
+        //console.log(this.dataAPI[0]);{this.dataAPI[0]}
+        this.fetcher.fetch();
+        //console.log(ApiManager.fetchAllUsers);
         return (
             <div className="Pages" style={{width: "100%", height:"100%", paddingTop:"0px", paddingBottom:"0px"}}>
                 <div className="site-content">
                     <NavHome />
-                    ded {this.dataAPI[0]}
+                    ded {ApiManager.fetchAllUsers}
 
                     <h1 className="global_title_1">Welcome on Supply'Impact {this.data.name} !</h1>
 
@@ -173,9 +176,6 @@ export default class Home extends Component {
                     </MDBContainer>
                 </div>
                 
-
-                
-               
 
             </div>
         );
