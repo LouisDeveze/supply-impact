@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Graphee from './Graph.js'
 import "./editor.css"
 
 export default class Editor extends Component{
@@ -11,8 +12,8 @@ export default class Editor extends Component{
 
     render() {
         return (
-            <div className="editor" style={{width:"75%", height:"100%", display:"inline-block"}}>
-                Courouc
+            <div>
+                <Graphee></Graphee>
             </div>
         );
     }
