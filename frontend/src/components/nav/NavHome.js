@@ -47,14 +47,14 @@ class NavHome extends Component {
                         <MDBNavItem>
                             <MDBDropdown>
                                 <MDBDropdownToggle nav caret>
-                                    Mes listes
+                                    My Lists
                                 </MDBDropdownToggle>
                                 <MDBDropdownMenu className="dropdown-default">
-                                <MDBDropdownItem href="/MyProducts">Mes Produits</MDBDropdownItem>
-                                <MDBDropdownItem href="/RawMaterials">Matière Première</MDBDropdownItem>
-                                <MDBDropdownItem href="/Suppliers">Fournisseurs</MDBDropdownItem>
-                                <MDBDropdownItem href="/Distributors">Distributeurs</MDBDropdownItem>
-                                <MDBDropdownItem href="/Subcontractors">Sous Traitants</MDBDropdownItem>
+                                <MDBDropdownItem href="/MyProducts">My Products</MDBDropdownItem>
+                                <MDBDropdownItem href="/RawMaterials">Raw Materials</MDBDropdownItem>
+                                <MDBDropdownItem href="/Suppliers">Suppliers</MDBDropdownItem>
+                                <MDBDropdownItem href="/Distributors">Distributors</MDBDropdownItem>
+                                <MDBDropdownItem href="/Subcontractors">Subcontactors</MDBDropdownItem>
                                 </MDBDropdownMenu>
                             </MDBDropdown>
                         </MDBNavItem>

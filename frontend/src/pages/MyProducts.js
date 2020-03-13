@@ -60,7 +60,7 @@ export default class MyProducts extends Component {
                             </MDBCard>
                         </MDBCol>
                     </MDBRow> 
-                    <MDBBtn color="primary" style={{float:"right"}}>Add</MDBBtn>
+                    <MDBBtn color="primary" style={{float:"right"}}>Add a Product</MDBBtn>
                 </MDBContainer>             
             </div> 
         </div>
