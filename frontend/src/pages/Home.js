@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NavHome from "../components/nav/NavHome";
 import ApiManager from "../API/ApiManager.js";
+import OJ from "../img/orangejuce.png"
 import "./pages.css"
 
 import {EventEmitter} from "events";
@@ -84,7 +85,7 @@ export default class Home extends Component {
             <div className="Pages" style={{width: "100%", height:"100%", paddingTop:"0px", paddingBottom:"0px"}}>
                 <div className="site-content">
                     <NavHome />
-                    ded {ApiManager.fetchAllUsers}
+                    {ApiManager.fetchAllUsers}
 
                     <h1 className="global_title_1">Welcome on Supply'Impact {this.data.name} !</h1>
 
@@ -145,7 +146,7 @@ export default class Home extends Component {
                                             <MDBView>
                                             <img
                                                 className="d-block w-100"
-                                                src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg"
+                                                src={OJ}
                                                 alt="First slide"
                                             />
                                             </MDBView>
