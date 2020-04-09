@@ -17,16 +17,16 @@ export default class Suppliers extends Component {
                 <div className="site-content">
                     <NavHome />
 
-                    <h1 className="global_title_1">My suppliers</h1>
+                   
 
                     <MDBContainer fluid  style={{ height:"100%"}} >
                         <MDBRow >
                             <MDBCol sm="6">
+                                <h1 className="global_title_1">My suppliers</h1>
                                 <MDBRow >
                                     <input className="form-control" type="text" placeholder="Search" aria-label="Search"  style={{width:"50%", marginLeft:"15px"}}/>
                                 </MDBRow>
                                 <MDBRow >
-
                                 <MDBCol sm="12">
                                     <MDBCard className="card-body" style={{ width: "100%", height:"100%", marginTop: "1rem" }}>
                                         <MDBCardTitle>All my suppliers</MDBCardTitle>
@@ -34,7 +34,7 @@ export default class Suppliers extends Component {
 
                                         <MDBRow >
                                             <MDBCol>
-                                                <MDBCard className="card-body" style={{ width: "100%", marginTop: "1rem" }}>
+                                                <MDBCard className="card-body" style={{ width: "100%",height: "100%", marginTop: "1rem" }}>
                                                     <MDBTable>
                                                         <MDBTableHead>
                                                             <tr>
@@ -72,32 +72,37 @@ export default class Suppliers extends Component {
                             </MDBCol>
 
                             <MDBCol sm="6">
-                                <MDBRow>
-                                <MDBCard className="card-body overflow-auto" style={{ height:"100%", marginTop: "1rem", overflow:"hidden" }}>
-                                    <MDBCardTitle>New supplier</MDBCardTitle>
-                                    <form>
-                                        <div className="grey-text">
-                                        <MDBInput label="Enter an email" icon="envelope" group type="email" validate error="wrong"
-                                            success="right" />
-                                        </div>
-                                        <div className="text-center">
-                                        <MDBBtn color="primary">Add supplier</MDBBtn>
-                                        </div>
-                                    </form>
-                                </MDBCard>
-                                </MDBRow>
-                                <MDBRow>
+                                
+                                <MDBCol sm="12">
+                                    <MDBRow>
                                     <MDBCard className="card-body overflow-auto" style={{ height:"100%", marginTop: "1rem", overflow:"hidden" }}>
-                                        <MDBCardTitle>Information about the selected supplier</MDBCardTitle>
-                                            <div>
-                                                <p> BLABLABLBABLALABLABLA</p>
+                                        <MDBCardTitle>New supplier</MDBCardTitle>
+                                        <form>
+                                            <div className="grey-text">
+                                            <MDBInput label="Enter an email" icon="envelope" group type="email" validate error="wrong"
+                                                success="right" />
                                             </div>
-                                            <div style={{display:"inline-block"}}>
-                                                <MDBBtn color="light-green">Contact</MDBBtn>
-                                                <MDBBtn color="deep-orange">Delete</MDBBtn>
+                                            <div className="text-center">
+                                            <MDBBtn color="primary">Add supplier</MDBBtn>
                                             </div>
+                                        </form>
                                     </MDBCard>
-                                </MDBRow>
+                                    </MDBRow>
+                                    <MDBRow>
+                                        <MDBCard className="card-body overflow-auto" style={{ height:"100%", marginTop: "1rem", overflow:"hidden" }}>
+                                            <MDBCardTitle>Information about the selected supplier</MDBCardTitle>
+                                                <div>
+                                                    <p> BLABLABLBABLALABLABLA</p>
+                                                    <p> BLABLABLBABLALABLABLA</p>
+                                                    <p> BLABLABLBABLALABLABLA</p>   
+                                                </div>
+                                                <div style={{display:"inline-block"}}>
+                                                    <MDBBtn color="light-green">Contact</MDBBtn>
+                                                    <MDBBtn color="deep-orange">Delete</MDBBtn>
+                                                </div>
+                                        </MDBCard>
+                                    </MDBRow>
+                                </MDBCol>
                             </MDBCol>
                         </MDBRow>
                     </MDBContainer>

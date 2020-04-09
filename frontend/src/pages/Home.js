@@ -1,9 +1,32 @@
 import React, { Component } from "react";
 import NavHome from "../components/nav/NavHome";
+import APIManagement from "../API/ApiManager.js";
+import "./pages.css"
+
+import {EventEmitter} from "events";
+import _ from "lodash";
 import { Pie } from "react-chartjs-2";
 import { MDBBox, MDBContainer,MDBCard,MDBCardTitle,MDBCardText,MDBRow,MDBCol,MDBCardGroup,MDBCardBody,MDBScrollbar,
     MDBCarousel, MDBCarouselInner, MDBCarouselItem,MDBView  } from 'mdbreact';
-import "./pages.css"
+
+
+
+let emitter = new EventEmitter;
+let EventFetchEnd = "fetch_end";
+
+class Fetcher {
+    manager = new APIManagement();
+    
+    fetch(){
+        this.dataExport = 0;
+
+        this.manager.fetchAllUsers().then(response => {emitter.emit(EventFetchEnd,response.data);})
+            .catch(err => {
+                console.error('pb de merde', err);
+            })
+        }
+}
+
 
 export default class Home extends Component {
     constructor(props) {
@@ -40,12 +63,25 @@ export default class Home extends Component {
           ]
         }
     }
-    
+
+    fetcher = new Fetcher();
+    dataAPI = [];
+    componentDidMount(){
+        
+        emitter.on(EventFetchEnd, (dataExport) => {
+            this.dataAPI = dataExport;
+            console.log(dataExport);
+        })
+    }
+
     render() {
+        //console.log(this.dataAPI[0]);
+
         return (
             <div className="Pages" style={{width: "100%", height:"100%", paddingTop:"0px", paddingBottom:"0px"}}>
                 <div className="site-content">
                     <NavHome />
+                    ded {this.dataAPI[0]}
 
                     <h1 className="global_title_1">Welcome on Supply'Impact {this.data.name} !</h1>
 
